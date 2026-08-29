@@ -7,10 +7,10 @@ const ExperienceCard = ({ exp, defaultOpen }) => {
   const [open, setOpen] = useState(defaultOpen);
 
   return (
-    <div className="border border-line bg-card">
+    <div className="border border-line bg-card hover:border-accent/40 transition-colors">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between gap-3 px-4 py-3 text-left"
+        className="press w-full flex items-center justify-between gap-3 px-4 py-3 text-left"
       >
         <div>
           <div className="flex items-center gap-2.5 flex-wrap">

@@ -12,7 +12,7 @@ const Section = ({ number, label, title, children, id }) => (
     <div className="font-mono text-[11px] tracking-[0.25em] text-dim mb-1">
       {number} — {label}
     </div>
-    {title && <h2 className="text-xl font-bold tracking-tight mb-6">{title}</h2>}
+    {title && <h2 className="font-display text-2xl font-bold tracking-tight mb-6">{title}</h2>}
     {children}
   </motion.section>
 );

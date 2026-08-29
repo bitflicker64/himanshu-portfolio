@@ -22,14 +22,20 @@ const SocialBtn = ({ href, icon: Icon, label }) => (
     href={href}
     target={href.startsWith('mailto') ? undefined : '_blank'}
     rel="noreferrer"
-    className="flex items-center gap-2 border border-line bg-card px-3 py-1.5 font-mono text-xs text-muted hover:text-fg hover:border-accent/50 transition-colors"
+    className="press flex items-center gap-2 border border-line bg-card px-3 py-1.5 font-mono text-xs text-muted hover:text-fg hover:border-accent/50 transition-colors"
   >
     <Icon size={13} /> {label}
   </a>
 );
 
 const Hero = () => (
-  <header className="px-5 sm:px-8 pt-10 pb-10">
+  <header className="relative px-5 sm:px-8 pt-10 pb-10">
+    {/* ambient glow behind the hero */}
+    <div
+      aria-hidden="true"
+      className="absolute inset-x-0 top-0 h-80 pointer-events-none"
+      style={{ background: 'radial-gradient(ellipse 70% 55% at 50% 0%, rgba(139,92,246,0.16), transparent 65%)' }}
+    />
     {/* banner strip with clock */}
     <div className="crosshatch border border-line h-20 mb-[-28px] relative">
       <div className="absolute bottom-2 right-3"><Clock /></div>
@@ -49,7 +55,7 @@ const Hero = () => (
         className="w-16 h-16 border border-line bg-card object-cover relative z-10 ml-4"
       />
       <div className="mt-4 flex items-baseline gap-3 flex-wrap">
-        <h1 className="text-3xl font-extrabold tracking-tight">{profile.name}</h1>
+        <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tighter leading-none">{profile.name}</h1>
         <span className="font-mono text-sm text-dim">{profile.age}</span>
         <span className="flex items-center gap-1.5 font-mono text-[10px] text-accent border border-accent/30 px-2 py-0.5">
           <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" /> OPERATIONAL
@@ -73,11 +79,17 @@ const Hero = () => (
       </div>
 
       <div className="mt-6 grid grid-cols-3 gap-2">
-        {profile.stats.map((s) => (
-          <div key={s.label} className="border border-line bg-card px-3 py-2.5">
-            <div className="font-mono text-lg text-accent">{s.value}</div>
+        {profile.stats.map((s, i) => (
+          <motion.div
+            key={s.label}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.3 + i * 0.12 }}
+            className="border border-line bg-card px-3 py-2.5"
+          >
+            <div className="font-mono text-lg text-accent tabular-nums">{s.value}</div>
             <div className="font-mono text-[10px] tracking-widest text-dim mt-0.5">{s.label}</div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </motion.div>

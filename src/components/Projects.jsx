@@ -10,7 +10,7 @@ const statusColor = {
 const Projects = () => (
   <div className="space-y-3">
     {projects.map((p) => (
-      <div key={p.id} className="border border-line bg-card px-4 py-4">
+      <div key={p.id} className="border border-line bg-card px-4 py-4 hover:border-accent/40 transition-colors">
         <div className="flex items-center gap-2.5 flex-wrap">
           <span className="font-semibold">{p.name}</span>
           {p.version && <span className="font-mono text-[10px] text-dim">{p.version}</span>}

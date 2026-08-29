@@ -15,7 +15,24 @@ const Contributions = () => {
   }, []);
 
   if (!data?.contributions?.length) {
-    return <p className="font-mono text-xs text-dim">Loading contribution graph…</p>;
+    // skeleton matching the heatmap's shape
+    return (
+      <div aria-label="Loading contribution graph">
+        <div className="flex items-baseline justify-between mb-3 font-mono text-xs">
+          <span className="text-dim tracking-widest">GITHUB CONTRIBUTIONS</span>
+          <span className="w-24 h-3 bg-card animate-pulse" />
+        </div>
+        <div className="flex gap-[3px]">
+          {Array.from({ length: 40 }, (_, i) => (
+            <div key={i} className="flex flex-col gap-[3px]">
+              {Array.from({ length: 7 }, (_, j) => (
+                <div key={j} className="w-[9px] h-[9px] bg-card animate-pulse" />
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
   }
 
   const days = data.contributions;

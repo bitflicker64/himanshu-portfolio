@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { ArrowUpRight, Mail } from 'lucide-react';
 import Hero from './components/Hero';
 import Section from './components/Section';
@@ -8,15 +9,22 @@ import { profile, techStack, writing } from './data/profile';
 
 const App = () => (
   <div className="min-h-screen flex justify-center">
-    <div className="w-full max-w-2xl border-x border-line bg-panel rail">
+    <main className="w-full max-w-2xl border-x border-line bg-panel rail">
       <Hero />
 
       <Section number="01" label="TOOLKIT">
         <div className="flex flex-wrap gap-1.5">
-          {techStack.map((t) => (
-            <span key={t} className="font-mono text-xs text-muted border border-line bg-card px-2 py-1">
+          {techStack.map((t, i) => (
+            <motion.span
+              key={t}
+              initial={{ opacity: 0, y: 6 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: i * 0.02 }}
+              className="font-mono text-xs text-muted border border-line bg-card px-2 py-1"
+            >
               {t}
-            </span>
+            </motion.span>
           ))}
         </div>
       </Section>
@@ -62,7 +70,7 @@ const App = () => (
         </p>
         <a
           href={`mailto:${profile.email}`}
-          className="inline-flex items-center gap-2 border border-accent/40 text-accent font-mono text-sm px-4 py-2 hover:bg-accent/10 transition-colors"
+          className="press inline-flex items-center gap-2 border border-accent/40 text-accent font-mono text-sm px-4 py-2 hover:bg-accent/10 transition-colors"
         >
           <Mail size={14} /> {profile.email}
         </a>
@@ -72,7 +80,7 @@ const App = () => (
         <span>© {new Date().getFullYear()} HV_INFRA_SYS v2.0.0 · STATUS: OPERATIONAL</span>
         <span>0xHV_ROOT_SECURED</span>
       </footer>
-    </div>
+    </main>
   </div>
 );
 

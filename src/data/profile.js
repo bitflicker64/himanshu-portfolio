@@ -20,7 +20,7 @@ export const profile = {
   stats: [
     { label: 'MERGED UPSTREAM PRs', value: '46' },
     { label: 'CONTRIBUTIONS / YR', value: '4k+' },
-    { label: 'UPTIME', value: '99.9%' },
+    { label: 'UPTIME', value: '99.94%' },
   ],
 };
 
