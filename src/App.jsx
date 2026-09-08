@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Mail } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
 import Hero from './components/Hero';
 import Section from './components/Section';
 import Experience from './components/Experience';
@@ -81,6 +82,7 @@ const App = () => (
         <span>0xHV_ROOT_SECURED</span>
       </footer>
     </main>
+    <Analytics />
   </div>
 );
 
